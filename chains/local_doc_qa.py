@@ -63,7 +63,7 @@ def load_file(filepath, sentence_size=SENTENCE_SIZE):
         loader = UnstructuredFileLoader(filepath, mode="elements")
         docs = loader.load()
     elif filepath.lower().endswith(".txt"):
-        loader = TextLoader(filepath, autodetect_encoding=True)
+        loader = TextLoader(filepath, autodetect_encoding=False,encoding='utf-8')
         textsplitter = ChineseTextSplitter(pdf=False, sentence_size=sentence_size)
         docs = loader.load_and_split(textsplitter)
     elif filepath.lower().endswith(".pdf"):

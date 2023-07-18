@@ -33,7 +33,7 @@ def main():
         vs_path, _ = local_doc_qa.init_knowledge_vector_store(filepath)
     history = []
     while True:
-        query = input("Input your question 请输入问题：")
+        query = input(":")
         last_print_len = 0
         for resp, history in local_doc_qa.get_knowledge_based_answer(query=query,
                                                                      vs_path=vs_path,
@@ -45,7 +45,7 @@ def main():
             else:
                 print(resp["result"])
         if REPLY_WITH_SOURCE:
-            source_text = [f"""出处 [{inum + 1}] {os.path.split(doc.metadata['source'])[-1]}：\n\n{doc.page_content}\n\n"""
+            source_text = [f"""source [{inum + 1}] {os.path.split(doc.metadata['source'])[-1]}：\n\n{doc.page_content}\n\n"""
                            # f"""相关度：{doc.metadata['score']}\n\n"""
                            for inum, doc in
                            enumerate(resp["source_documents"])]

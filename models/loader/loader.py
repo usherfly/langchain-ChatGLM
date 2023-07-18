@@ -229,7 +229,7 @@ class LoaderCheckPoint:
         # transformer.layers 占用 28 层
         # 总共30层分配到num_gpus张卡上
         num_trans_layers = 28
-        per_gpu_layers = 30 / num_gpus
+        per_gpu_layers = 25
 
         # bugfix: PEFT加载lora模型出现的层命名不同
         if self.lora:
